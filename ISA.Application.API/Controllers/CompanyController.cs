@@ -1,5 +1,6 @@
 ﻿namespace ISA.Application.API.Controllers
 {
+    using ISA.Application.API.Models.Requests;
     using ISA.Core.Domain.Dtos;
     using ISA.Core.Domain.Entities.Company;
     using ISA.Core.Domain.UseCases.Company;
@@ -22,9 +23,10 @@
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]
         [Authorize(Policy = "superAdminPolicy")]
-        public async Task RegisterCompany([FromBody] Company company)
+        public async Task RegisterCompany([FromBody] CompanyRegistrationRequestModel company)
         => await _companyService.AddAsync(company.Name,
-                                          company.Address,
+                                          company.Country,
+                                          company.City,
                                           company.StartinWorkingHour,
                                           company.EndWorkingHour,
                                           company.Description);

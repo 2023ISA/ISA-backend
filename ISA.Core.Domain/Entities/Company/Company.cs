@@ -23,13 +23,13 @@
         }
 
 
-        public Company(string name, Address address, string description, int startWorkingHour, int endWorkingHour)
+        public Company(string name, string country, string city, string description, int startWorkingHour, int endWorkingHour)
         {
             Id = new Guid();
             Name = name;
-            Address = address;
+            Address = new Address(country,city);
             Description = description;
-            AddresId = address.Id;
+            AddresId = Address.Id;
             StartinWorkingHour = startWorkingHour;
             EndWorkingHour = endWorkingHour;
         }

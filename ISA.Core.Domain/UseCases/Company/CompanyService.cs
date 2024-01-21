@@ -20,11 +20,11 @@
             _mapper = mapper;
         }
 
-        public async Task AddAsync(string name, Address address, int startWorkingHour, int endWorkingHour, string description)
+        public async Task AddAsync(string name, string country, string city, int startWorkingHour, int endWorkingHour, string description)
         {
             await _isaUnitOfWork.StartTransactionAsync();
 
-            Company newCompany = new Company(name, address, description, startWorkingHour, endWorkingHour);
+            Company newCompany = new Company(name, country, city, description, startWorkingHour, endWorkingHour);
             newCompany.Id = Guid.NewGuid();
 
             try
